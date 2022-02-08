@@ -13,7 +13,7 @@ from datetime import date
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1301, 891)
+        MainWindow.resize(1301, 857)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         self.lck_matches = QtWidgets.QTableWidget(self.page_2)
         self.lck_matches.setGeometry(QtCore.QRect(90, 500, 1141, 281))
         self.lck_matches.setObjectName("lck_matches")
-        self.lck_matches.setColumnCount(10)
+        self.lck_matches.setColumnCount(9)
         self.lck_matches.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.lck_matches.setHorizontalHeaderItem(0, item)
@@ -101,28 +101,20 @@ class Ui_MainWindow(object):
         self.lck_matches.setHorizontalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
         self.lck_matches.setHorizontalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.lck_matches.setHorizontalHeaderItem(9, item)
         self.label_8 = QtWidgets.QLabel(self.page_2)
-        self.label_8.setGeometry(QtCore.QRect(310, 810, 61, 21))
+        self.label_8.setGeometry(QtCore.QRect(440, 800, 61, 21))
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.page_2)
-        self.label_9.setGeometry(QtCore.QRect(460, 810, 91, 21))
+        self.label_9.setGeometry(QtCore.QRect(620, 800, 91, 21))
         self.label_9.setObjectName("label_9")
-        self.label_10 = QtWidgets.QLabel(self.page_2)
-        self.label_10.setGeometry(QtCore.QRect(670, 810, 101, 21))
-        self.label_10.setObjectName("label_10")
         self.lck_line = QtWidgets.QTextEdit(self.page_2)
-        self.lck_line.setGeometry(QtCore.QRect(350, 810, 71, 21))
+        self.lck_line.setGeometry(QtCore.QRect(480, 800, 71, 21))
         self.lck_line.setObjectName("lck_line")
-        self.lck_over = QtWidgets.QTextEdit(self.page_2)
-        self.lck_over.setGeometry(QtCore.QRect(550, 810, 71, 21))
-        self.lck_over.setObjectName("lck_over")
-        self.lck_under = QtWidgets.QTextEdit(self.page_2)
-        self.lck_under.setGeometry(QtCore.QRect(770, 810, 71, 21))
-        self.lck_under.setObjectName("lck_under")
+        self.lck_odds = QtWidgets.QTextEdit(self.page_2)
+        self.lck_odds.setGeometry(QtCore.QRect(670, 800, 71, 21))
+        self.lck_odds.setObjectName("lck_odds")
         self.lck_calculate = QtWidgets.QPushButton(self.page_2)
-        self.lck_calculate.setGeometry(QtCore.QRect(890, 800, 141, 41))
+        self.lck_calculate.setGeometry(QtCore.QRect(840, 790, 141, 41))
         self.lck_calculate.setObjectName("lck_calculate")
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QtWidgets.QWidget()
@@ -170,6 +162,44 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(self.page_3)
         self.label_5.setGeometry(QtCore.QRect(1080, 20, 361, 61))
         self.label_5.setObjectName("label_5")
+        self.lcs_matches = QtWidgets.QTableWidget(self.page_3)
+        self.lcs_matches.setGeometry(QtCore.QRect(90, 500, 1141, 281))
+        self.lcs_matches.setObjectName("lcs_matches")
+        self.lcs_matches.setColumnCount(9)
+        self.lcs_matches.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lcs_matches.setHorizontalHeaderItem(8, item)
+        self.lcs_odds = QtWidgets.QTextEdit(self.page_3)
+        self.lcs_odds.setGeometry(QtCore.QRect(650, 800, 71, 21))
+        self.lcs_odds.setObjectName("lcs_odds")
+        self.lcs_calculate = QtWidgets.QPushButton(self.page_3)
+        self.lcs_calculate.setGeometry(QtCore.QRect(820, 790, 141, 41))
+        self.lcs_calculate.setObjectName("lcs_calculate")
+        self.label_10 = QtWidgets.QLabel(self.page_3)
+        self.label_10.setGeometry(QtCore.QRect(600, 800, 91, 21))
+        self.label_10.setObjectName("label_10")
+        self.label_14 = QtWidgets.QLabel(self.page_3)
+        self.label_14.setGeometry(QtCore.QRect(420, 800, 61, 21))
+        self.label_14.setObjectName("label_14")
+        self.lcs_line = QtWidgets.QTextEdit(self.page_3)
+        self.lcs_line.setGeometry(QtCore.QRect(460, 800, 71, 21))
+        self.lcs_line.setObjectName("lcs_line")
         self.stackedWidget.addWidget(self.page_3)
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
@@ -215,6 +245,44 @@ class Ui_MainWindow(object):
         self.ladder_3.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.ladder_3.setHorizontalHeaderItem(1, item)
+        self.lec_matches = QtWidgets.QTableWidget(self.page_4)
+        self.lec_matches.setGeometry(QtCore.QRect(90, 500, 1141, 281))
+        self.lec_matches.setObjectName("lec_matches")
+        self.lec_matches.setColumnCount(9)
+        self.lec_matches.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.lec_matches.setHorizontalHeaderItem(8, item)
+        self.lec_odds = QtWidgets.QTextEdit(self.page_4)
+        self.lec_odds.setGeometry(QtCore.QRect(640, 800, 71, 21))
+        self.lec_odds.setObjectName("lec_odds")
+        self.lec_calculate = QtWidgets.QPushButton(self.page_4)
+        self.lec_calculate.setGeometry(QtCore.QRect(810, 790, 141, 41))
+        self.lec_calculate.setObjectName("lec_calculate")
+        self.label_11 = QtWidgets.QLabel(self.page_4)
+        self.label_11.setGeometry(QtCore.QRect(590, 800, 91, 21))
+        self.label_11.setObjectName("label_11")
+        self.label_12 = QtWidgets.QLabel(self.page_4)
+        self.label_12.setGeometry(QtCore.QRect(410, 800, 61, 21))
+        self.label_12.setObjectName("label_12")
+        self.lec_line = QtWidgets.QTextEdit(self.page_4)
+        self.lec_line.setGeometry(QtCore.QRect(450, 800, 71, 21))
+        self.lec_line.setObjectName("lec_line")
         self.stackedWidget.addWidget(self.page_4)
         self.page_5 = QtWidgets.QWidget()
         self.page_5.setObjectName("page_5")
@@ -227,6 +295,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+
 
         # button links to created functions
         # load data associated with the selected page
@@ -244,20 +313,25 @@ class Ui_MainWindow(object):
         self.back_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page))
         self.back_3.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page))
 
-
+        # alter the line/odds used in the calculation and refresh the upcoming games table
+        self.lck_calculate.clicked.connect(lambda: self.calc_lck())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def calc_lck(self):
+        line = float(self.lck_line.toPlainText())
+        odds = float(self.lck_odds.toPlainText())
+        self.load_data('lck', self.tableWidget, self.page_2,'https://lol.fandom.com/wiki/LCK/2022_Season/Spring_Season', self.ladder_1, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lck_matches, line, odds)
     
     def get_lck(self):
         self.load_data('lck', self.tableWidget, self.page_2,'https://lol.fandom.com/wiki/LCK/2022_Season/Spring_Season', self.ladder_1, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lck_matches)
 
     def get_lcs(self):
-        self.load_data('lcs', self.tableWidget_2, self.page_3, 'https://lol.fandom.com/wiki/LCS/2022_Season/Spring_Season', self.ladder_2)
+        self.load_data('lcs', self.tableWidget_2, self.page_3, 'https://lol.fandom.com/wiki/LCS/2022_Season/Spring_Season', self.ladder_2, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lcs_matches)
 
     def get_lec(self):
-        self.load_data('lec', self.tableWidget_3, self.page_4, 'https://lol.fandom.com/wiki/LEC/2022_Season/Spring_Season', self.ladder_3)
+        self.load_data('lec', self.tableWidget_3, self.page_4, 'https://lol.fandom.com/wiki/LEC/2022_Season/Spring_Season', self.ladder_3, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lec_matches)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -295,24 +369,21 @@ class Ui_MainWindow(object):
         item = self.lck_matches.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Date"))
         item = self.lck_matches.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "G1 Avg"))
+        item.setText(_translate("MainWindow", "Line"))
         item = self.lck_matches.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "G1 %"))
+        item.setText(_translate("MainWindow", "G1 Avg"))
         item = self.lck_matches.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "G1 O Val"))
+        item.setText(_translate("MainWindow", "G1 %"))
         item = self.lck_matches.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "G1 U Val"))
+        item.setText(_translate("MainWindow", "G1 Value"))
         item = self.lck_matches.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "G2 Avg"))
         item = self.lck_matches.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "G2 %"))
         item = self.lck_matches.horizontalHeaderItem(8)
-        item.setText(_translate("MainWindow", "G2 O Val"))
-        item = self.lck_matches.horizontalHeaderItem(9)
-        item.setText(_translate("MainWindow", "G2 U Val"))
+        item.setText(_translate("MainWindow", "G2 Value"))
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Line:</span></p></body></html>"))
-        self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Over Odds:</span></p></body></html>"))
-        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Under Odds:</span></p></body></html>"))
+        self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Odds:</span></p></body></html>"))
         self.lck_calculate.setText(_translate("MainWindow", "Calculate"))
         item = self.tableWidget_2.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Team Name"))
@@ -338,6 +409,27 @@ class Ui_MainWindow(object):
         item = self.ladder_2.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Record"))
         self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Ladder</span></p></body></html>"))
+        item = self.lcs_matches.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Match"))
+        item = self.lcs_matches.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Date"))
+        item = self.lcs_matches.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Line"))
+        item = self.lcs_matches.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "G1 Avg"))
+        item = self.lcs_matches.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "G1 %"))
+        item = self.lcs_matches.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "G1 Value"))
+        item = self.lcs_matches.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "G2 Avg"))
+        item = self.lcs_matches.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "G2 %"))
+        item = self.lcs_matches.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "G2 Value"))
+        self.lcs_calculate.setText(_translate("MainWindow", "Calculate"))
+        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Odds:</span></p></body></html>"))
+        self.label_14.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Line:</span></p></body></html>"))
         item = self.tableWidget_3.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Team Name"))
         item = self.tableWidget_3.horizontalHeaderItem(1)
@@ -362,9 +454,31 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Team"))
         item = self.ladder_3.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Record"))
+        item = self.lec_matches.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Match"))
+        item = self.lec_matches.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Date"))
+        item = self.lec_matches.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Line"))
+        item = self.lec_matches.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "G1 Avg"))
+        item = self.lec_matches.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "G1 %"))
+        item = self.lec_matches.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "G1 Value"))
+        item = self.lec_matches.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "G2 Avg"))
+        item = self.lec_matches.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "G2 %"))
+        item = self.lec_matches.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "G2 Value"))
+        self.lec_calculate.setText(_translate("MainWindow", "Calculate"))
+        self.label_11.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Odds:</span></p></body></html>"))
+        self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Line:</span></p></body></html>"))
 
     # navigate to page and fill it with data relating to the given leagues statistics, rankings and upcomning games
-    def load_data(self, competition, table, page, url, ladder_table, url_2, upcoming_table):   
+    def load_data(self, competition, table, page, url, ladder_table, url_2, upcoming_table, line = 23.5, odds = 1.83):   
+        # change pages if it has not been done
         try:
             self.stackedWidget.setCurrentWidget(page)
         except:
@@ -372,12 +486,12 @@ class Ui_MainWindow(object):
 
         league = Ladder()
         ladder_details = league.ladder(url, competition)       
+        
         self.insert_data(ladder_details[0], 0, ladder_table)
         self.insert_data(ladder_details[1], 1, ladder_table)
 
         upcoming = UpcomingGames()
         games = upcoming.games(url_2)
-
        
         wb = load_workbook('C:\\Users\\Legen\\Documents\\League Program\\data\\' + competition + '_data.xlsx')
         ws = wb['Sheet1']
@@ -424,6 +538,7 @@ class Ui_MainWindow(object):
         except:
             pass
         
+        # get the stats for each team in the upcoming matches and store in a list
         for i in range(0, len(games), 1):
             for j in range(0, len(name_data), 1):
                 if games[i] == name_data[j]:
@@ -432,31 +547,54 @@ class Ui_MainWindow(object):
                     avg_g2.append(float(a_g2_data[j]))
                     perc_g2.append(float(p_g2_data[j]))
 
-        # turn the games into 'team 1 vs team 2' and insert it into the table
+        
         matches = []
         combined_avg_g1 = []
         combined_avg_g2 = []
         combined_perc_g1 = []
         combined_perc_g2 = []
+        g1_value = []
+        g2_value = []
+        line_list = []
         
         try:
+        # turn the games into 'team 1 vs team 2' and combine data to reflect the match stats rather than individual teams
             for i in range(0, len(games) - 1, 2):
                 team_1 = games[i]
                 team_2 = games[i + 1]
                 match = team_1 + ' vs ' + team_2
                 matches.append(match)
-                combined_avg_g1.append(str(round(((avg_g1[i] + avg_g1[i + 1]) / 2), 2)))
-                combined_avg_g2.append(str(round(((avg_g2[i] + avg_g2[i + 1]) / 2), 2)))
-                combined_perc_g1.append(str(round(((perc_g1[i] + perc_g1[i + 1]) / 2), 2)))
-                combined_perc_g2.append(str(round(((perc_g2[i] + perc_g2[i + 1]) / 2), 2)))
+                combined_avg_g1.append(round(((avg_g1[i] + avg_g1[i + 1]) / 2), 2))
+                combined_avg_g2.append(round(((avg_g2[i] + avg_g2[i + 1]) / 2), 2))
+                combined_perc_g1.append(round(((perc_g1[i] + perc_g1[i + 1]) / 2), 2))
+                combined_perc_g2.append(round(((perc_g2[i] + perc_g2[i + 1]) / 2), 2))       
         except:
-            pass
+            print('Error no data available')
 
+        # calculate the value of bets based on provided data
+        g1_value = upcoming.calculate_value(combined_perc_g1, combined_avg_g1, line, odds)
+        g2_value = upcoming.calculate_value(combined_perc_g2, combined_avg_g2, line, odds)
+
+        a_g1 = [str(x) for x in combined_avg_g1]
+        a_g2 = [str(x) for x in combined_avg_g2]
+        p_g1 = [str(x) for x in combined_perc_g1]
+        p_g2 = [str(x) for x in combined_perc_g2]
+        v_g1 = [str(x) for x in g1_value]
+        v_g2 = [str(x) for x in g2_value]
+   
+        # create list of given line to insert into table
+        for i in range(len(matches)):
+            line_list.append(str(line))
+
+        # insert all data into the correct columns of the upcoming table
         self.insert_data(matches, 0, upcoming_table)
-        self.insert_data(combined_avg_g1, 2, upcoming_table)
-        self.insert_data(combined_avg_g2, 3, upcoming_table)
-        self.insert_data(combined_perc_g1, 6, upcoming_table)
-        self.insert_data(combined_perc_g2, 7, upcoming_table)
+        self.insert_data(line_list, 2, upcoming_table)
+        self.insert_data(a_g1, 3, upcoming_table)
+        self.insert_data(p_g1, 4, upcoming_table)
+        self.insert_data(v_g1, 5, upcoming_table)
+        self.insert_data(a_g2, 6, upcoming_table)
+        self.insert_data(p_g2, 7, upcoming_table)
+        self.insert_data(v_g2, 8, upcoming_table)
 
     # insert given data into table
     def insert_data(self, data, col, table):    
@@ -700,6 +838,7 @@ class Ladder:
 
 class UpcomingGames:
         
+    # 
     def games(self, url):
         result = requests.get(url)
         soup = BeautifulSoup(result.text,'lxml')
@@ -712,7 +851,14 @@ class UpcomingGames:
         
         return games
 
-
+    # apply the model calculations and return a list that represents the value in each game
+    def calculate_value(self, percentage, average, line, odds):
+        game_value = []
+        for i in range(0, len(percentage), 1):
+            system_odds_g1 = 50 + abs(((percentage[i] - 50) + (average[i] - line) * 2) / 2)
+            g1_odds = (1 / odds) * 100
+            game_value.append(round(system_odds_g1 - g1_odds, 2))
+        return game_value
 
 
 # provides necessary data used in calculation and creation of table
