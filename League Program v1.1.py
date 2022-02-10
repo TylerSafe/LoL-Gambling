@@ -315,6 +315,7 @@ class Ui_MainWindow(object):
 
         # alter the line/odds used in the calculation and refresh the upcoming games table
         self.lck_calculate.clicked.connect(lambda: self.calc_lck())
+        self.lec_calculate.clicked.connect(lambda: self.calc_lec())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -323,6 +324,11 @@ class Ui_MainWindow(object):
         line = float(self.lck_line.toPlainText())
         odds = float(self.lck_odds.toPlainText())
         self.load_data('lck', self.tableWidget, self.page_2,'https://lol.fandom.com/wiki/LCK/2022_Season/Spring_Season', self.ladder_1, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lck_matches, line, odds)
+
+    def calc_lec(self):
+        line = float(self.lec_line.toPlainText())
+        odds = float(self.lec_odds.toPlainText())
+        self.load_data('lec', self.tableWidget_3, self.page_4,'https://lol.fandom.com/wiki/LEC/2022_Season/Spring_Season', self.ladder_3, 'https://www.rivalry.com/esports/league-of-legends-betting/3282-european-championship', self.lec_matches, line, odds)
     
     def get_lck(self):
         self.load_data('lck', self.tableWidget, self.page_2,'https://lol.fandom.com/wiki/LCK/2022_Season/Spring_Season', self.ladder_1, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lck_matches)
@@ -331,7 +337,7 @@ class Ui_MainWindow(object):
         self.load_data('lcs', self.tableWidget_2, self.page_3, 'https://lol.fandom.com/wiki/LCS/2022_Season/Spring_Season', self.ladder_2, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lcs_matches)
 
     def get_lec(self):
-        self.load_data('lec', self.tableWidget_3, self.page_4, 'https://lol.fandom.com/wiki/LEC/2022_Season/Spring_Season', self.ladder_3, 'https://www.rivalry.com/esports/league-of-legends-betting/3254-champions-korea', self.lec_matches)
+        self.load_data('lec', self.tableWidget_3, self.page_4, 'https://lol.fandom.com/wiki/LEC/2022_Season/Spring_Season', self.ladder_3, 'https://www.rivalry.com/esports/league-of-legends-betting/3282-european-championship', self.lec_matches)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -484,15 +490,17 @@ class Ui_MainWindow(object):
         except:
             pass
 
+        # load the ladder upon opening/updating the page
         league = Ladder()
         ladder_details = league.ladder(url, competition)       
-        
         self.insert_data(ladder_details[0], 0, ladder_table)
         self.insert_data(ladder_details[1], 1, ladder_table)
 
+        # load data for the upcoming games for the specified league
         upcoming = UpcomingGames()
         games = upcoming.games(url_2)
        
+        # open and retrieve all statistics data from excel sgeet for relevant league
         wb = load_workbook('C:\\Users\\Legen\\Documents\\League Program\\data\\' + competition + '_data.xlsx')
         ws = wb['Sheet1']
 
@@ -535,17 +543,33 @@ class Ui_MainWindow(object):
         try:
             if competition == 'lck':
                 name_data[8] = 'Nongshim RedForce'
+            elif competition == 'lec':
+                name_data[3] = 'G2'
+                name_data[8] = 'BDS'
+                name_data[5] = 'Misfits'
+                name_data[7] = 'SK'
+                name_data[9] = 'Vitality'
         except:
             pass
-        
+               
         # get the stats for each team in the upcoming matches and store in a list
         for i in range(0, len(games), 1):
+            no_matches = 0
             for j in range(0, len(name_data), 1):
                 if games[i] == name_data[j]:
                     avg_g1.append(float(a_g1_data[j]))
                     perc_g1.append(float(p_g1_data[j]))
                     avg_g2.append(float(a_g2_data[j]))
                     perc_g2.append(float(p_g2_data[j]))
+                else:
+                    # if no matches are found there is a discrepency in the names, append a large number to avoid list index out of range 
+                    # but make also make it clear that the stats are not real and need to be reviewed manually
+                    no_matches += 1
+                    if no_matches == len(name_data):
+                        avg_g1.append(999)
+                        perc_g1.append(999)
+                        avg_g2.append(999)
+                        perc_g2.append(999)
 
         
         matches = []
@@ -556,25 +580,27 @@ class Ui_MainWindow(object):
         g1_value = []
         g2_value = []
         line_list = []
-        
-        try:
+
+
         # turn the games into 'team 1 vs team 2' and combine data to reflect the match stats rather than individual teams
-            for i in range(0, len(games) - 1, 2):
-                team_1 = games[i]
-                team_2 = games[i + 1]
-                match = team_1 + ' vs ' + team_2
-                matches.append(match)
-                combined_avg_g1.append(round(((avg_g1[i] + avg_g1[i + 1]) / 2), 2))
+        for i in range(0, len(games) - 1, 2):
+            team_1 = games[i]
+            team_2 = games[i + 1]
+            match = team_1 + ' vs ' + team_2
+            matches.append(match) 
+            combined_avg_g1.append(round(((avg_g1[i] + avg_g1[i + 1]) / 2), 2))
+            combined_perc_g1.append(round(((perc_g1[i] + perc_g1[i + 1]) / 2), 2))
+            try:    
                 combined_avg_g2.append(round(((avg_g2[i] + avg_g2[i + 1]) / 2), 2))
-                combined_perc_g1.append(round(((perc_g1[i] + perc_g1[i + 1]) / 2), 2))
-                combined_perc_g2.append(round(((perc_g2[i] + perc_g2[i + 1]) / 2), 2))       
-        except:
-            print('Error no data available')
+                combined_perc_g2.append(round(((perc_g2[i] + perc_g2[i + 1]) / 2), 2))   
+            except:
+                pass   
 
         # calculate the value of bets based on provided data
         g1_value = upcoming.calculate_value(combined_perc_g1, combined_avg_g1, line, odds)
         g2_value = upcoming.calculate_value(combined_perc_g2, combined_avg_g2, line, odds)
 
+        # convert data in lists to strings for insertion into table
         a_g1 = [str(x) for x in combined_avg_g1]
         a_g2 = [str(x) for x in combined_avg_g2]
         p_g1 = [str(x) for x in combined_perc_g1]
@@ -793,21 +819,26 @@ class Ladder:
     def ladder(self, url, competition):
         result = requests.get(url)
         soup = BeautifulSoup(result.text,'html.parser')
-        team_names = []
-
-        # scrape data from chosen table and get information on team names
         table = soup.find('table', class_ = 'wikitable2 standings')
-        name = table.find_all('a', class_ = 'catlink-teams tWACM tWAFM tWAN to_hasTooltip')
-        for team in name:
-            team_names.append(team['data-to-id'])
+        team_names = []
         
         # no class/id available so have to specify specific td in the html to retrieve teams records
         try:    
             if competition == 'lck':
+                # scrape data from chosen table and get information on team names for LCK
+                name = table.find_all('a', class_ = 'catlink-teams tWACM tWAFM tWAN to_hasTooltip')
+                for team in name:
+                    team_names.append(team['data-to-id'])
                 team_records = self.record_position(table, 5, 8)
+            
             elif competition == 'lcs':
                 team_records = self.record_position(table, 6, 5)
+            
             elif competition == 'lec':
+                # scrape data from chosen table and get information on team names for LEC
+                name = table.find_all('a', class_ = 'catlink-teams tWACM tWAFM tWAN')
+                for team in name:
+                    team_names.append(team.text)
                 team_records = self.record_position(table, 5, 5)
 
         except:
@@ -847,9 +878,10 @@ class UpcomingGames:
         all_games = soup.find_all('div', class_ = 'outcome-name')
         for team in all_games:
             name = team.text
-            games.append(name)
-        
+            games.append(name)        
+
         return games
+
 
     # apply the model calculations and return a list that represents the value in each game
     def calculate_value(self, percentage, average, line, odds):
