@@ -1370,6 +1370,8 @@ class Ui_MainWindow(object):
         p_g2_data = [p_g2[x].value for x in range(len(name))]
         p_all_data = [p_all[x].value for x in range(len(name))]
 
+        print(match_data)
+
         wb.close()
 
         # use function to insert data into the statistics table
@@ -1386,19 +1388,22 @@ class Ui_MainWindow(object):
         avg_g2 = []
         perc_g1 = []
         perc_g2 = []
-        
-        print(name_data)
-        print(games)
 
+        # sometimes data has match line attached, remove it before comparisons
+        for i in range(len(games)):
+            if games[i][-5:] == ' +1.5' or games[i][-5:] == ' -1.5':
+                length = len(games[i]) - 5
+                games[i] = games[i][:length]
+        
         # fix name discrepency in data pulled from different locations
         try:
             if competition == 'lck':
+                name_data[0] = 'DragonX'
                 name_data[8] = 'Nongshim RedForce'
             elif competition == 'lec':
                 name_data[3] = 'G2'
                 name_data[8] = 'BDS'
                 name_data[5] = 'Misfits'
-                name_data[7] = 'SK'
                 name_data[9] = 'Vitality'
             elif competition == 'lcs':
                 name_data[2] = 'Counter Logic'
@@ -1411,11 +1416,20 @@ class Ui_MainWindow(object):
                 name_data[5] = 'SBTC'
                 name_data[6] = 'Flash'
                 name_data[7] = 'Secret'
+            elif competition == 'lpl':
+                name_data[1] = 'Bilibili'
+                name_data[2] = 'Edward Gaming'
+                name_data[4] = 'Invictus'
+                name_data[6] = 'LGD'
+                name_data[7] = 'LNG'
+                name_data[10] = 'Royal Never Give Up'
+                name_data[13] = 'ThunderTalk'
+                name_data[16] = 'Weibo'
 
         except:
             pass
 
-        matches = []
+        matches_2 = []
         combined_avg_g1 = []
         combined_avg_g2 = []
         combined_perc_g1 = []
@@ -1449,7 +1463,7 @@ class Ui_MainWindow(object):
                 team_1 = games[i]
                 team_2 = games[i + 1]
                 match = team_1 + ' vs ' + team_2
-                matches.append(match) 
+                matches_2.append(match) 
                 combined_avg_g1.append(round(((avg_g1[i] + avg_g1[i + 1]) / 2), 2))
                 combined_perc_g1.append(round(((perc_g1[i] + perc_g1[i + 1]) / 2), 2))
                 try:    
@@ -1473,11 +1487,11 @@ class Ui_MainWindow(object):
         v_g2 = [str(x) for x in g2_value]
    
         # create list of given line to insert into table
-        for i in range(len(matches)):
+        for i in range(len(matches_2)):
             line_list.append(str(line))
 
         # insert all data into the correct columns of the upcoming table
-        self.insert_data(matches, 0, upcoming_table)
+        self.insert_data(matches_2, 0, upcoming_table)
         self.insert_data(line_list, 2, upcoming_table)
         self.insert_data(a_g1, 3, upcoming_table)
         self.insert_data(p_g1, 4, upcoming_table)
@@ -1495,23 +1509,22 @@ class Ui_MainWindow(object):
             row += 1
 
 class TableData:        
-    # class variables
-    kills_g1 = []
-    kills_g2 = []
-    kills_all = []
-    games_g1 = []
-    games_g2 = []
-    games_all = []
-    percent_g1 = []
-    percent_g2 = []
-    percent_all = []
-
     # required initial information to establish a class
     def __init__(self, kill_average, teams, competition):
+        # class variables
         self.kill_average = kill_average
         self.teams = teams
         self.competition = competition
-
+        self.kills_g1 = []
+        self.kills_g2 = []
+        self.kills_all = []
+        self.games_g1 = []
+        self.games_g2 = []
+        self.games_all = []
+        self.percent_g1 = []
+        self.percent_g2 = []
+        self.percent_all = []
+        
         # create lists of the correct length based on the amount of teams in the league
         for team in teams:
             self.kills_g1.append(0)
@@ -1618,25 +1631,23 @@ class TableData:
                         if total_kills > self.kill_average:
                             self.percent_g2[j] += 1
 
-    # calculate the average kills over the last 10 games
+    # calculate the average kills over the season
     def calculate_average(self, kills, games):
         average = []
-        # if there has been 10 or less games use all
-        if len(kills) < 11:
-            for i in range(len(kills)):
-                if games[i] != 0:
-                    average.append(str(round(kills[i]/games[i], 2)))
-                else:
-                    average.append(0)
+        for i in range(len(games)):
+            if games[i] != 0:
+                average.append(str(round(kills[i]/games[i], 2)))
+            else:
+                average.append(0)
         # if there has been greater than 10 games only use the 10 most recent
-        else:
-            games.reverse()
-            kills.reverse()
-            for i in range(10):
-                if games[i] != 0:
-                    average.append(str(round(kills[i]/games[i], 2)))
-                else:
-                    average.append(0)
+        #else:
+        #    games.reverse()
+        #    kills.reverse()
+        #    for i in range(len(games)):
+        #        if games[i] != 0:
+        #            average.append(str(round(kills[i]/games[i], 2)))
+        #        else:
+        #            average.append(0)
         return average
 
     # calculate the percentage of games that have gone over the predetermined line
@@ -1666,7 +1677,7 @@ class TableData:
         # open correct excel doc
         wb = load_workbook('C:\\Users\\Legen\\Documents\\League Program\\data\\' + self.competition + '_data.xlsx')
         ws = wb['Sheet1']
-        
+
         # save all required data to the excel doc
         for i in range(len(self.teams)):
             ws.cell(column = 1, row = i + 1, value = self.teams[i])
