@@ -22,60 +22,62 @@ class Ui_MainWindow(object):
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
         self.label = QtWidgets.QLabel(self.page)
-        self.label.setGeometry(QtCore.QRect(440, 50, 361, 61))
+        self.label.setGeometry(QtCore.QRect(460, 50, 361, 61))
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.page)
-        self.pushButton.setGeometry(QtCore.QRect(240, 150, 111, 51))
+        self.pushButton.setGeometry(QtCore.QRect(260, 150, 111, 51))
         self.pushButton.setObjectName("pushButton")
         self.lcs = QtWidgets.QPushButton(self.page)
-        self.lcs.setGeometry(QtCore.QRect(240, 240, 111, 51))
+        self.lcs.setGeometry(QtCore.QRect(260, 240, 111, 51))
         self.lcs.setObjectName("lcs")
         self.lec = QtWidgets.QPushButton(self.page)
-        self.lec.setGeometry(QtCore.QRect(240, 330, 111, 51))
+        self.lec.setGeometry(QtCore.QRect(260, 330, 111, 51))
         self.lec.setObjectName("lec")
         self.vcs = QtWidgets.QPushButton(self.page)
-        self.vcs.setGeometry(QtCore.QRect(460, 240, 111, 51))
+        self.vcs.setGeometry(QtCore.QRect(480, 240, 111, 51))
         self.vcs.setObjectName("vcs")
         self.lec_6 = QtWidgets.QPushButton(self.page)
-        self.lec_6.setGeometry(QtCore.QRect(680, 240, 111, 51))
+        self.lec_6.setGeometry(QtCore.QRect(700, 240, 111, 51))
         self.lec_6.setObjectName("lec_6")
         self.lec_7 = QtWidgets.QPushButton(self.page)
-        self.lec_7.setGeometry(QtCore.QRect(900, 150, 111, 51))
+        self.lec_7.setGeometry(QtCore.QRect(920, 150, 111, 51))
         self.lec_7.setObjectName("lec_7")
         self.lec_8 = QtWidgets.QPushButton(self.page)
-        self.lec_8.setGeometry(QtCore.QRect(680, 150, 111, 51))
+        self.lec_8.setGeometry(QtCore.QRect(700, 150, 111, 51))
         self.lec_8.setObjectName("lec_8")
         self.lec_9 = QtWidgets.QPushButton(self.page)
-        self.lec_9.setGeometry(QtCore.QRect(460, 330, 111, 51))
+        self.lec_9.setGeometry(QtCore.QRect(480, 330, 111, 51))
         self.lec_9.setObjectName("lec_9")
         self.lpl = QtWidgets.QPushButton(self.page)
-        self.lpl.setGeometry(QtCore.QRect(460, 150, 111, 51))
+        self.lpl.setGeometry(QtCore.QRect(480, 150, 111, 51))
         self.lpl.setObjectName("lpl")
         self.lec_11 = QtWidgets.QPushButton(self.page)
-        self.lec_11.setGeometry(QtCore.QRect(680, 330, 111, 51))
+        self.lec_11.setGeometry(QtCore.QRect(700, 330, 111, 51))
         self.lec_11.setObjectName("lec_11")
         self.lec_12 = QtWidgets.QPushButton(self.page)
-        self.lec_12.setGeometry(QtCore.QRect(900, 240, 111, 51))
+        self.lec_12.setGeometry(QtCore.QRect(920, 240, 111, 51))
         self.lec_12.setObjectName("lec_12")
         self.lec_13 = QtWidgets.QPushButton(self.page)
-        self.lec_13.setGeometry(QtCore.QRect(900, 330, 111, 51))
+        self.lec_13.setGeometry(QtCore.QRect(920, 330, 111, 51))
         self.lec_13.setObjectName("lec_13")
-        self.tableWidget_13 = QtWidgets.QTableWidget(self.page)
-        self.tableWidget_13.setGeometry(QtCore.QRect(50, 480, 561, 311))
-        self.tableWidget_13.setObjectName("tableWidget_13")
-        self.tableWidget_13.setColumnCount(0)
-        self.tableWidget_13.setRowCount(0)
+        self.upcoming_table = QtWidgets.QTableWidget(self.page)
+        self.upcoming_table.setGeometry(QtCore.QRect(60, 480, 561, 311))
+        self.upcoming_table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.upcoming_table.setObjectName("upcoming_table")
+        self.upcoming_table.setColumnCount(2)
+        self.upcoming_table.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.upcoming_table.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.upcoming_table.setHorizontalHeaderItem(1, item)
         self.label_77 = QtWidgets.QLabel(self.page)
-        self.label_77.setGeometry(QtCore.QRect(260, 440, 221, 31))
+        self.label_77.setGeometry(QtCore.QRect(270, 430, 221, 31))
         self.label_77.setObjectName("label_77")
-        self.label_78 = QtWidgets.QLabel(self.page)
-        self.label_78.setGeometry(QtCore.QRect(850, 440, 221, 31))
-        self.label_78.setObjectName("label_78")
-        self.tableWidget_14 = QtWidgets.QTableWidget(self.page)
-        self.tableWidget_14.setGeometry(QtCore.QRect(650, 480, 561, 311))
-        self.tableWidget_14.setObjectName("tableWidget_14")
-        self.tableWidget_14.setColumnCount(0)
-        self.tableWidget_14.setRowCount(0)
+        self.label_13 = QtWidgets.QLabel(self.page)
+        self.label_13.setGeometry(QtCore.QRect(720, 490, 521, 291))
+        self.label_13.setText("")
+        self.label_13.setPixmap(QtGui.QPixmap("../../../Pictures/league_image.webp"))
+        self.label_13.setObjectName("label_13")
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -148,7 +150,7 @@ class Ui_MainWindow(object):
         self.label_8.setGeometry(QtCore.QRect(440, 800, 61, 21))
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(self.page_2)
-        self.label_9.setGeometry(QtCore.QRect(620, 800, 91, 21))
+        self.label_9.setGeometry(QtCore.QRect(620, 800, 51, 21))
         self.label_9.setObjectName("label_9")
         self.lck_line = QtWidgets.QTextEdit(self.page_2)
         self.lck_line.setGeometry(QtCore.QRect(480, 800, 71, 21))
@@ -235,7 +237,7 @@ class Ui_MainWindow(object):
         self.lcs_calculate.setGeometry(QtCore.QRect(820, 790, 141, 41))
         self.lcs_calculate.setObjectName("lcs_calculate")
         self.label_10 = QtWidgets.QLabel(self.page_3)
-        self.label_10.setGeometry(QtCore.QRect(600, 800, 91, 21))
+        self.label_10.setGeometry(QtCore.QRect(600, 800, 51, 21))
         self.label_10.setObjectName("label_10")
         self.label_14 = QtWidgets.QLabel(self.page_3)
         self.label_14.setGeometry(QtCore.QRect(420, 800, 61, 21))
@@ -333,7 +335,7 @@ class Ui_MainWindow(object):
         self.label_53.setGeometry(QtCore.QRect(440, 20, 361, 61))
         self.label_53.setObjectName("label_53")
         self.label_54 = QtWidgets.QLabel(self.page_5)
-        self.label_54.setGeometry(QtCore.QRect(620, 800, 91, 21))
+        self.label_54.setGeometry(QtCore.QRect(620, 800, 51, 21))
         self.label_54.setObjectName("label_54")
         self.lpl_stats_table = QtWidgets.QTableWidget(self.page_5)
         self.lpl_stats_table.setGeometry(QtCore.QRect(100, 80, 831, 351))
@@ -434,7 +436,7 @@ class Ui_MainWindow(object):
         self.vcs_odds.setGeometry(QtCore.QRect(670, 800, 71, 21))
         self.vcs_odds.setObjectName("vcs_odds")
         self.label_58 = QtWidgets.QLabel(self.page_vcs)
-        self.label_58.setGeometry(QtCore.QRect(620, 800, 91, 21))
+        self.label_58.setGeometry(QtCore.QRect(620, 800, 51, 21))
         self.label_58.setObjectName("label_58")
         self.ladder_vcs = QtWidgets.QTableWidget(self.page_vcs)
         self.ladder_vcs.setGeometry(QtCore.QRect(1000, 80, 231, 351))
@@ -863,6 +865,16 @@ class Ui_MainWindow(object):
         self.vcs_calculate.clicked.connect(lambda: self.calc_vcs())
         self.lpl_calculate.clicked.connect(lambda: self.calc_lpl())
 
+        # scrape the upcoming games and insert them into a table upon start up
+        next_games = UpcomingGames()
+        comp, match = next_games.next_games()
+        self.insert_data(comp, 0, self.upcoming_table)
+        self.insert_data(match, 1, self.upcoming_table)
+        # resize the table for ease of use
+        header = self.upcoming_table.horizontalHeader()       
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -922,8 +934,11 @@ class Ui_MainWindow(object):
         self.lec_11.setText(_translate("MainWindow", "x"))
         self.lec_12.setText(_translate("MainWindow", "x"))
         self.lec_13.setText(_translate("MainWindow", "x"))
-        self.label_77.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Todays Games</span></p></body></html>"))
-        self.label_78.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Tomorrows Games</span></p></body></html>"))
+        item = self.upcoming_table.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "League"))
+        item = self.upcoming_table.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Match"))
+        self.label_77.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Upcoming Games</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">LCK Statistics</span></p></body></html>"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Team Name"))
@@ -1370,8 +1385,6 @@ class Ui_MainWindow(object):
         p_g2_data = [p_g2[x].value for x in range(len(name))]
         p_all_data = [p_all[x].value for x in range(len(name))]
 
-        print(match_data)
-
         wb.close()
 
         # use function to insert data into the statistics table
@@ -1770,7 +1783,6 @@ class UpcomingGames:
 
         return games
 
-
     # apply the model calculations and return a list that represents the value in each game
     def calculate_value(self, percentage, average, line, odds):
         game_value = []
@@ -1780,7 +1792,31 @@ class UpcomingGames:
             game_value.append(round(system_odds_g1 - g1_odds, 2))
         return game_value
 
+    
+    def next_games(self):
+        # declare variables and scrape the upcoming games
+        games = self.games('https://www.rivalry.com/au/esports/league-of-legends-betting')
+        matches = []
 
+        # change the list of teams into a list of matches
+        for i in range(0, len(games) - 1, 2):
+            team_1 = games[i]
+            team_2 = games[i + 1]
+            match = team_1 + ' vs ' + team_2
+            matches.append(match)
+
+        result = requests.get('https://www.rivalry.com/au/esports/league-of-legends-betting')
+        soup = BeautifulSoup(result.text,'lxml')
+        league = []
+
+        # scrape data for the competition that each match takes place in
+        all_leagues = soup.find_all('div', class_ = 'text-league-of-legends-shade dark:text-league-of-legends-tint text-[11px]')
+        for comp in all_leagues:
+            league.append(comp.text)
+
+        return league, matches
+
+        
 # provides necessary data used in calculation and creation of table
 def lck_data():
     # create object of league class for the LCK
