@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QMovie
 import sys
 from openpyxl import load_workbook
 from datetime import date
@@ -62,7 +63,7 @@ class Ui_MainWindow(object):
         self.lec_13.setObjectName("lec_13")
         self.upcoming_table = QtWidgets.QTableWidget(self.page)
         self.upcoming_table.setGeometry(QtCore.QRect(60, 480, 561, 311))
-        self.upcoming_table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.upcoming_table.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
         self.upcoming_table.setObjectName("upcoming_table")
         self.upcoming_table.setColumnCount(2)
         self.upcoming_table.setRowCount(0)
@@ -73,11 +74,15 @@ class Ui_MainWindow(object):
         self.label_77 = QtWidgets.QLabel(self.page)
         self.label_77.setGeometry(QtCore.QRect(270, 430, 221, 31))
         self.label_77.setObjectName("label_77")
+        # added animated gif
         self.label_13 = QtWidgets.QLabel(self.page)
         self.label_13.setGeometry(QtCore.QRect(720, 490, 521, 291))
         self.label_13.setText("")
-        self.label_13.setPixmap(QtGui.QPixmap("../../../Pictures/league_image.webp"))
         self.label_13.setObjectName("label_13")
+        self.movie = QMovie("C:\\Users\\Legen\\Documents\\League Program\\league_image.webp")
+        self.label_13.setMovie(self.movie)
+        self.movie.start()
+        # keep code
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -1345,6 +1350,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "G2 Value"))
         self.label_75.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:16pt;\">Ladder</span></p></body></html>"))
 
+
     # navigate to page and fill it with data relating to the given leagues statistics, rankings and upcomning games
     def load_data(self, competition, table, page, url, ladder_table, url_2, upcoming_table, line = 23.5, odds = 1.83):   
         # change pages if it has not been done
@@ -1708,12 +1714,6 @@ class TableData:
         
 # creates a ladder based on the current standings of the given league
 class Ladder:
-    first_page = 6
-    individual_page = 6
-    lec = []
-    lcs = []
-    lck = []
-    lpl = []
     
     # get all information associated with the ladder for the specific league
     def ladder(self, url, competition):
@@ -1724,9 +1724,10 @@ class Ladder:
         
         # no class/id available so have to specify specific td in the html to retrieve teams records
         #try:    
-        name = table.find_all('a', class_ = 'catlink-teams tWACM tWAFM tWAN to_hasTooltip')
+        name = table.find_all('span', class_ = 'teamname')
+
         for team in name:
-            team_names.append(team['data-to-id'])
+            team_names.append(team.text)
         
         number_teams = len(team_names)
         
@@ -1735,7 +1736,7 @@ class Ladder:
             team_records = self.record_position(table, 5, 8, number_teams)
         
         elif competition == 'lcs':
-            team_records = self.record_position(table, 6, 5, number_teams)
+            team_records = self.record_position(table, 5, 5, number_teams)
         
         elif competition == 'lec':
             # scrape data from chosen table and get information on team names for LCK
